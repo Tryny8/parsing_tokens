@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2026-01-04
+### Fix
+- Adding function [0.2.0] in __init__.py for visibility API
+
 ## [Unreleased]
 ### Added
 - Token registry system (custom token types, balises, separators)

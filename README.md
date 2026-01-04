@@ -1,4 +1,4 @@
-# parsing-tokens [v0.2.0]
+# parsing-tokens [v0.2.1]
 
 Librairie Python de tokenisation de texte basée sur des patterns regex.
 

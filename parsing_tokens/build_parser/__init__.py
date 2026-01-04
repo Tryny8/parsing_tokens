@@ -1,6 +1,9 @@
 from parsing_tokens.build_parser.api_parser import (create_token_pattern, compile_single_token_matcher,
                                                     compile_multiples_tokens_matcher, generator_tokens_in_line,
-                                                    iter_tokens_in_line, extract_tokens, parse_tokens)
+                                                    iter_tokens_in_line, extract_tokens, parse_tokens,
+                                                    set_register_token_type, set_register_balise, set_register_separator,
+                                                    get_register_all_token_type, get_register_all_balise,
+                                                    get_register_all_separator)
 
 __all__ = ["create_token_pattern",
            "compile_single_token_matcher",
@@ -8,4 +11,10 @@ __all__ = ["create_token_pattern",
            "generator_tokens_in_line",
            "iter_tokens_in_line",
            "extract_tokens",
-           "parse_tokens"]
+           "parse_tokens",
+           "set_register_token_type",
+           "set_register_balise",
+           "set_register_separator",
+           "get_register_all_token_type",
+           "get_register_all_balise",
+           "get_register_all_separator"]
