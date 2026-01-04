@@ -6,7 +6,7 @@ Librairie Python de tokenisation de texte basée sur des patterns regex.
 API susceptible d’évoluer.
 
 ## Installation
-pip install git+https://github.com/ton_user/parsing_tokens.git
+pip install git+https://github.com/Tryny8/parsing_tokens.git
 
 ## Usage rapide
 ```python
