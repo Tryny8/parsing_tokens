@@ -4,7 +4,7 @@
 
 import re
 from re import Pattern
-from parsing_tokens.build_parser.register_parser import (TOKEN_TYPES, BALISE_TYPES, SEPARATORS,
+from parsing_tokens.build_parser.register_parser import (KEYS_PATTERN, TOKEN_TYPES, BALISE_TYPES, SEPARATORS,
                                                          BALISE_MAP, SEPARATOR_MAP)
 
 
@@ -57,6 +57,26 @@ def _is_invalid_separateur_name_str(separateur_name: str) -> bool:
     # Bas niveau
     """ Choix du séparateur pris en charge par la fonction regex """
     return separateur_name not in SEPARATORS
+
+
+def _is_valid_dict_pattern(pattern_dict: dict) -> bool:
+    # Bas niveau
+    """
+    Vérifie que le dictionnaire est conforme format d'un pattern
+    {"type_name": 'token', "balise_name": 'bracket', "separateur_name": 'egale', "type_display": True}
+    """
+
+    keys_to_check = pattern_dict.keys()
+    if len(keys_to_check) == len(KEYS_PATTERN):
+        for key in keys_to_check:
+            if key in KEYS_PATTERN:
+                continue
+            else:
+                raise ValueError(f"Key in pattern_dict not conforme : {key},\n"
+                                 f"Please return keys in : ", KEYS_PATTERN)
+        return True
+    else:
+        raise ValueError(f"Key in pattern_dict is missing : {KEYS_PATTERN}")
 
 
 #-----------------------------------------------------------------------------------------------------------------------
