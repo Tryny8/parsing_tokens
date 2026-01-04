@@ -4,11 +4,9 @@
 
 import re
 from re import Pattern
+from parsing_tokens.build_parser.register_parser import (TOKEN_TYPES, BALISE_TYPES, SEPARATORS,
+                                                         BALISE_MAP, SEPARATOR_MAP)
 
-
-TOKEN_TYPES = {"token", "ast", "interpreter"}
-BALISE_TYPES = {"parenthese", "bracket", "crochet"}
-SEPARATORS = {"deux_points", "egale"}
 
 #-----------------------------------------------------------------------------------------------------------------------
 def _compile_single_pattern(pattern: str) -> Pattern[str]:
@@ -64,29 +62,17 @@ def _is_invalid_separateur_name_str(separateur_name: str) -> bool:
 #-----------------------------------------------------------------------------------------------------------------------
 def _build_balise_name_str(balise_name: str) -> tuple[str, str]:
     # Bas niveau
-    """ Choix de la balise pris en charge par la fonction regex ["parenthèse", "bracket", "crochet"]"""
-    BALISES = {
-        "parenthese": (r"\(", r"\)"),
-        "bracket": (r"\[", r"\]"),
-        "crochet": (r"\{", r"\}"),
-    } # TODO : Mapping de balise à faire pour remplacer if/elif/else
-
-    if balise_name == "parenthese":
-        return r"\(", r"\)"
-    elif balise_name == "bracket":
-        return r"\[", r"\]"
-    elif balise_name == "crochet":
-        return r"\{", r"\}"
-    else:
-        raise ValueError(f"Unsupported balise: {balise_name}")
+    """ Choix de la balise pris en charge par la fonction regex: Registre BALISE_MAP"""
+    try:
+        return BALISE_MAP[balise_name]
+    except KeyError:
+        raise ValueError(f"Unknown balise name : {balise_name}")
 
 
 def _build_separateur_name_str(separateur_name: str) -> str:
     # Bas niveau
-    """ Choix du séparateur pris en charge par la fonction regex ["deux_points", "égale"] """
-    if separateur_name == "deux_points":
-        return ":"
-    elif separateur_name == "egale":
-        return "="
-    else:
-        raise ValueError(f"Unsupported separateur: {separateur_name}")
+    """ Choix du séparateur pris en charge par la fonction regex: Registre SEPARATOR_MAP """
+    try:
+        return SEPARATOR_MAP[separateur_name]
+    except KeyError:
+        raise ValueError(f"Unknown separateur name : {separateur_name}")
