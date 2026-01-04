@@ -1,0 +1,7 @@
+Le [token=Lorem Ipsum] est simplement du faux texte employé dans la {interpreter=composition} et la mise en page avant impression.
+Le [token=Lorem Ipsum] est le faux texte standard de l'imprimerie depuis les années (ast:1500),
+quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un {interpreter=livre} spécimen de polices de texte.
+Il n'a pas fait que survivre (ast:cinq) siècles, mais s'est aussi adapté à la {interpreter=bureautique} informatique,
+sans que son {interpreter=contenu} n'en soit modifié.
+Il a été popularisé dans les années (ast:1960) grâce à la vente de feuilles [Letraset] contenant des passages du [token=Lorem Ipsum],
+et, plus récemment, par son inclusion dans des {interpreter=applications} de mise en page de texte, comme [Aldus PageMaker].
