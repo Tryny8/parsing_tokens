@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "parsing-tokens"
-version = "0.1.0"
+version = "0.2.1"
 description = "Text tokenization and parsing library (WIP)"
-authors = [{name = "Ton Nom"}]
+authors = [{name = "Antony"}]
 readme = "README.md"
 requires-python = ">=3.10"
