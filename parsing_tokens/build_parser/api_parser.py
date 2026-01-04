@@ -139,19 +139,19 @@ def set_register_separator(name: str, char: str) -> None:
     _register_separator_char(name, char)
 
 
-def get_register_all_token_type() -> None:
+def get_register_all_token_type() -> set:
     # API publique
     """Retourne les types de token."""
     return TOKEN_TYPES
 
 
-def get_register_all_balise() -> None:
+def get_register_all_balise() -> set:
     # API publique
     """Retourne les balises."""
     return BALISE_TYPES
 
 
-def get_register_all_separator() -> None:
+def get_register_all_separator() -> set:
     # API publique
     """Retourne les séparateurs."""
     return SEPARATORS
