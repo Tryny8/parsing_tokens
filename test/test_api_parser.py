@@ -10,13 +10,13 @@ Main TokenParser
 from re import Pattern
 
 from parsing_tokens.build_io.api_io import open_file
-from parsing_tokens.build_parser.api_parser import compile_multiples_tokens_matcher, parse_tokens
+from parsing_tokens.build_parser.api_parser import compile_hardcoded_tokens_matcher, parse_tokens
 
 
 def main(verbose=False):
     contenu = open_file("data_test/test.txt")
 
-    pattern: Pattern[str] = compile_multiples_tokens_matcher()  # type: ignore
+    pattern: Pattern[str] = compile_hardcoded_tokens_matcher()  # type: ignore
 
     if verbose:
         print("<<Start of File>>")

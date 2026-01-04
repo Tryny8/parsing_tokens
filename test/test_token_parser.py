@@ -56,7 +56,10 @@ def main(verbose=False):
 
     test_custom_token_type()
     test_default_token_still_works()
-
+    parser.set_balise("crochet", token_type='interpreter', separator='egale')
+    print(parser.get_all_balises())
+    tokens = parser.get_tokens(single_pattern=False, verbose=verbose)
+    print("All Tokens multiple balise:", tokens)
 
 if __name__ == "__main__":
     main()
