@@ -117,7 +117,7 @@ def parse_tokens(content: str, *, segmentation="line", pattern: Pattern[str] | N
 
 
 #-----------------------------------------------------------------------------------------------------------------------
-def register_token_type(name: str) -> None:
+def set_register_token_type(name: str) -> None:
     # API publique
     """Ajoute un nouveau type de token."""
     if not isinstance(name, str) or not name:
@@ -125,15 +125,33 @@ def register_token_type(name: str) -> None:
     TOKEN_TYPES.add(name)
 
 
-def register_balise(name: str, *, open_char: str, close_char: str) -> None:
+def set_register_balise(name: str, *, open_char: str, close_char: str) -> None:
     # API publique
     """Ajoute une nouvelle balise."""
     BALISE_TYPES.add(name)
     _register_balise_chars(name, open_char, close_char)
 
 
-def register_separator(name: str, char: str) -> None:
+def set_register_separator(name: str, char: str) -> None:
     # API publique
     """Ajoute un nouveau séparateur."""
     SEPARATORS.add(name)
     _register_separator_char(name, char)
+
+
+def get_register_all_token_type() -> None:
+    # API publique
+    """Retourne les types de token."""
+    return TOKEN_TYPES
+
+
+def get_register_all_balise() -> None:
+    # API publique
+    """Retourne les balises."""
+    return BALISE_TYPES
+
+
+def get_register_all_separator() -> None:
+    # API publique
+    """Retourne les séparateurs."""
+    return SEPARATORS
