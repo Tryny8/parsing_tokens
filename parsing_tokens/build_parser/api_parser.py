@@ -13,12 +13,12 @@ from collections.abc import Iterable, Iterator
 
 from parsing_tokens.build_parser.core_parser import (_build_token_pattern_str, _build_token_pattern_str_without_name,
                                                      _is_invalid_type_name_str, _is_invalid_balise_name_str,
-                                                     _is_invalid_separateur_name_str, _build_balise_name_str,
+                                                     _is_invalid_separateur_name_str, _is_valid_dict_pattern,
+                                                     _build_balise_name_str,
                                                      _build_separateur_name_str, _compile_single_pattern,
                                                      _merge_token_patterns, _register_balise_chars,
                                                      _register_separator_char)
-from parsing_tokens.build_parser.register_parser import (TOKEN_TYPES, BALISE_TYPES, SEPARATORS,
-                                                         BALISE_MAP, SEPARATOR_MAP)
+from parsing_tokens.build_parser.register_parser import (TOKEN_TYPES, BALISE_TYPES, SEPARATORS)
 from parsing_tokens.build_segmentation.api_segmentation import segment_content
 
 
@@ -75,7 +75,21 @@ def compile_single_token_matcher(token_type: str, balise: str, separator: str, t
     return _compile_single_pattern(pattern)
 
 
-def compile_multiples_tokens_matcher() -> Pattern[str]:
+def compile_multiples_tokens_matcher(list_patterns: list) -> Pattern[str]:
+    # API publique
+    """
+    Implémentation de multiples patterns au format avec compilation
+    {"type_name": 'token', "balise_name": 'bracket', "separateur_name": 'egale', "type_display": True}
+    """
+    list_patterns_matcher: list = []
+    for pattern_dict in list_patterns:
+        if _is_valid_dict_pattern(pattern_dict):
+            pattern_matcher = create_token_pattern(**pattern_dict)
+            list_patterns_matcher.append(pattern_matcher)
+    return _merge_token_patterns(list_patterns_matcher)
+
+
+def compile_hardcoded_tokens_matcher() -> Pattern[str]:
     # API publique
     """ Implémentation erronée, mais fonctionnel → ne pas créer de pattern dans cette fonction """
     pattern_1 = create_token_pattern('token', 'bracket', 'egale')
@@ -139,19 +153,19 @@ def set_register_separator(name: str, char: str) -> None:
     _register_separator_char(name, char)
 
 
-def get_register_all_token_type() -> set:
+def get_register_all_token_type() -> set[str]:
     # API publique
     """Retourne les types de token."""
     return TOKEN_TYPES
 
 
-def get_register_all_balise() -> set:
+def get_register_all_balise() -> set[str]:
     # API publique
     """Retourne les balises."""
     return BALISE_TYPES
 
 
-def get_register_all_separator() -> set:
+def get_register_all_separator() -> set[str]:
     # API publique
     """Retourne les séparateurs."""
     return SEPARATORS
