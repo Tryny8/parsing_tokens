@@ -6,6 +6,10 @@ import re
 from re import Pattern
 
 
+TOKEN_TYPES = {"token", "ast", "interpreter"}
+BALISE_TYPES = {"parenthese", "bracket", "crochet"}
+SEPARATORS = {"deux_points", "egale"}
+
 #-----------------------------------------------------------------------------------------------------------------------
 def _compile_single_pattern(pattern: str) -> Pattern[str]:
     # Bas niveau
@@ -42,19 +46,19 @@ def _build_token_pattern_str_without_name(pre_balise: str, post_balise: str) -> 
 def _is_invalid_type_name_str(type_name: str) -> bool:
     # Bas niveau
     """ Choix du type pris en charge par la fonction regex """
-    return type_name not in {"token", "ast", "interpreter"}
+    return type_name not in TOKEN_TYPES
 
 
 def _is_invalid_balise_name_str(balise_name: str) -> bool:
     # Bas niveau
     """ Choix de la balise pris en charge par la fonction regex """
-    return balise_name not in {"parenthese", "bracket", "crochet"}
+    return balise_name not in BALISE_TYPES
 
 
 def _is_invalid_separateur_name_str(separateur_name: str) -> bool:
     # Bas niveau
     """ Choix du séparateur pris en charge par la fonction regex """
-    return separateur_name not in {"deux_points", "egale"}
+    return separateur_name not in SEPARATORS
 
 
 #-----------------------------------------------------------------------------------------------------------------------
