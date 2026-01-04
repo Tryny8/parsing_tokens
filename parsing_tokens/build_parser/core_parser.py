@@ -76,3 +76,14 @@ def _build_separateur_name_str(separateur_name: str) -> str:
         return SEPARATOR_MAP[separateur_name]
     except KeyError:
         raise ValueError(f"Unknown separateur name : {separateur_name}")
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+def _register_balise_chars(name: str, open_char: str, close_char: str):
+    # Bas niveau
+    BALISE_MAP.setdefault(name, (open_char, close_char))
+
+
+def _register_separator_char(name: str, char: str):
+    # Bas niveau
+    SEPARATOR_MAP.setdefault(name, char)
