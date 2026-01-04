@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [0.3.0] - 2026-01-04
+
+### Breaking Changes
+- `compile_multiples_tokens_matcher` no longer uses hardcoded patterns.
+  It now requires a list of pattern dictionaries.
+- `TokenParser` internal logic has been refactored to support dynamic
+  multi-pattern compilation.
+- Previous usage relying on implicit hardcoded token patterns must be updated.
+
+### Added
+- Dynamic multi-pattern compilation via `compile_multiples_tokens_matcher(list_patterns)`
+- Validation of pattern dictionaries using `_is_valid_dict_pattern`
+- Centralized pattern key registry (`KEYS_PATTERN`)
+- Support for multiple active token definitions in `TokenParser`
+- New methods:
+  - `reset_balise`
+  - `get_all_balises`
+
+### Changed
+- Token parsing is now fully data-driven (dictionary-based)
+- `TokenParser` supports both single-pattern and multi-pattern modes
+- Improved separation between pattern definition and compilation
+
+### Internal
+- Refactored parser architecture to prepare future extensibility
+- Improved validation and error messages for invalid pattern definitions
+
+### Tests
+- Added unit tests covering multi-pattern compilation and validation
+
+
 ## [0.2.1] - 2026-01-04
 ### Fix
 - Adding function [0.2.0] in __init__.py for visibility API
